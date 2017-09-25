@@ -29,7 +29,7 @@ var app= {
         hammertime.get('pinch').set ({enable: true});
         hammertime.get('rotate').set ({enable: true});
         
-        hammertime.on ('tap doubletap pan swipe press pinch rotate', function(ev){
+        hammertime.on ('tap doubletap  swipe press  rotate', function(ev){
             document.querySelector('#info').innerHTML= ev.type + '!';
         });
     },
@@ -41,6 +41,9 @@ var app= {
         document.body.className= 'oscuro';
     }
 };
+/*Fin del inicio */
+
+
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function(){
         FastClick.attach(document.body);
