@@ -41,6 +41,14 @@ var app= {
            zona.className='press';
        });
        
+       hammertime.on('swipe', function (ev){
+           var clase =undefined;
+           direccion= ev.direction;
+           if (direccion===4) clase ='swipe-derecha';
+           if (direccion===2) clase ='swipe-izquierda';
+           zona.className=clase;
+       });
+       
     },
     ponloClaro: function() {
         document.body.className= 'claro';
