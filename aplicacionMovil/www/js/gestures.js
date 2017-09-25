@@ -29,18 +29,9 @@ var app= {
         hammertime.get('pinch').set ({enable: true});
         hammertime.get('rotate').set ({enable: true});
         
-        zona.addEventListener('webkitAnimationEnd', function(e){
-            zona.className= '';                                 // Quita el nombre de la clase al final de la animacion
+        hammertime.on ('tap doubletap pan swipe press pinch rotate', function(ev){
+            document.querySelector('#info').innerHTML= ev.type + '!';
         });
-/*        hammertime.on ('tap doubletap pan swipe press pinch rotate', function(ev){ */
-        hammertime.on ('doubletap', function(ev){  
-        document.querySelector('#info').innerHTML= ev.type + '!';
-        zona.className = 'doubletap';
-        });
-        hammertime.on ('press', function(ev){
-            zona.className='press';
-        });
-        
     },
     ponloClaro: function() {
         document.body.className= 'claro';
@@ -52,6 +43,7 @@ var app= {
 };
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function(){
+        FastClick.attach(document.body);
         app.inicio();
     }, false)
 }
