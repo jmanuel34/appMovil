@@ -32,8 +32,10 @@ var app= {
         zona.addEventListener('webkitAnimationEnd', function(e){
             zona.className= '';                                 // Quita el nombre de la clase al final de la animacion
         });
+/*        hammertime.on ('tap doubletap pan swipe press pinch rotate', function(ev){ */
         hammertime.on ('doubletap', function(ev){  
-            zona.className = 'doubletap';
+        document.querySelector('#info').innerHTML= ev.type + '!';
+        zona.className = 'doubletap';
         });
         hammertime.on ('press', function(ev){
             zona.className='press';
