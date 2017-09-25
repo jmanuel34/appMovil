@@ -30,26 +30,15 @@ var app= {
         hammertime.get('rotate').set ({enable: true});
         
         zona.addEventListener('webkitAnimationEnd', function(e){
-            zona.className= '';                                 // Quita el nombre de la clase al final de la animacion
+            zona.className= '';
         });
+/*        hammertime.on ('tap doubletap pan swipe press pinch rotate', function(ev){ */
         hammertime.on ('doubletap', function(ev){  
-            zona.className = 'doubletap';
+        document.querySelector('#info').innerHTML= ev.type + '!';
+        zona.className = 'doubletap';
         });
         hammertime.on ('press', function(ev){
             zona.className='press';
-        });
-        
-        hammertime.on('swipe', function (ev){
-            var clase = undefined;
-            direccion = ev.direction;
-            if (direccion == 4) clase = 'swipe-derecha';
-            if (direccion == 2) clase = 'swipe-izquierda';
-            zona.className = clase;
-        });
-        
-        hammertime.on('rotate', function (ev){
-            var umbral = 25;
-            if (ev.distance > umbral) zona.className = 'rotate';
         });
         
     },
