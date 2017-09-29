@@ -29,9 +29,26 @@ var app= {
         hammertime.get('pinch').set ({enable: true});
         hammertime.get('rotate').set ({enable: true});
         
-        hammertime.on ('tap doubletap pan swipe press pinch rotate', function(ev){
-            document.querySelector('#info').innerHTML= ev.type + '!';
-        });
+       zona.addEventListener('webkitAnimationEnd', function(e){
+          zona.className=''; 
+       });
+       
+       hammertime.on('doubletap', function(ev) {
+           zona.className='doubletap';
+       });
+       
+       hammertime.on('press', function (ev){
+           zona.className='press';
+       });
+       
+       hammertime.on('swipe', function (ev){
+           var clase =undefined;
+           direccion= ev.direction;
+           if (direccion===4) clase ='swipe-derecha';
+           if (direccion===2) clase ='swipe-izquierda';
+           zona.className=clase;
+       });
+       
     },
     ponloClaro: function() {
         document.body.className= 'claro';
@@ -41,10 +58,13 @@ var app= {
         document.body.className= 'oscuro';
     }
 };
+/*Fin del inicio */
+
+
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function(){
         FastClick.attach(document.body);
         app.inicio();
-    }, false)
+    }, false);
 }
 
