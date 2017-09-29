@@ -5,46 +5,35 @@
  */
 var app= {
     inicio: function(){
-        this.iniciaBotones();
         this.iniciaFastClick();
-        this.iniciaHammer();
     },
-    
     iniciaFastClick: function() {
-        FastClick.attach(document.body);
-    },
-    
-    iniciaBotones: function(){
-        var botonClaro = document.querySelector('#claro');
-        var botonOscuro = document.querySelector('#oscuro');
-        
-        botonClaro.addEventListener('click', this.ponloClaro, false);
-        botonOscuro.addEventListener('click', this.ponloOscuro, false);
-    },
-    
-    iniciaHammer: function(){
-        var zona = document.getElementById('zona-gestos');
-        var hammertime = new Hammer(zona);
-        
-        hammertime.get('pinch').set ({enable: true});
-        hammertime.get('rotate').set ({enable: true});
-        
-        hammertime.on ('tap doubletap pan swipe press pinch rotate', function(ev){
-            document.querySelector('#info').innerHTML= ev.type + '!';
-        });
-    },
-    ponloClaro: function() {
-        document.body.className= 'claro';
-    },
-    
-    ponloOscuro: function() {
-        document.body.className= 'oscuro';
-    }
+      FastClick.attach(document.body);      
+  },
+  iniciaBoton: function(){
+   var ButtonAction=document.querySelector('#button-action');
+   buttonAction.addEventListener('click', this.tomarFoto);
+  },
+  tomarFoto: function(){
+      var opciones = {quality: 50,
+              destinationType: Camera.DestinationType.FILE_URI,
+              targetWidth: 300,
+              targetHeight: 300,
+              correctOrientation: true
+          };
+          navigator.camera.getPicture(app.fotoTomada, app.errorAlTomarFoto, opciones);
+  },
+  fotoTomada: function(imageURI) {
+      var image = document.querySelector('#foto');
+      image.src=imageURI;
+  },
+  errorAlTomarFoto: function(){
+      console.log('Fallo al tomar la foto o toma cancelada: '+ message);
+  }
 };
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function(){
-        FastClick.attach(document.body);
         app.inicio();
-    }, false)
+    }, false);
 }
 
