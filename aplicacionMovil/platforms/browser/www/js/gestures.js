@@ -5,24 +5,38 @@
  */
 var app= {
     inicio: function(){
-        var botonClaro = document.querySelector('#claro');
-        var botonOscuro = document.querySelector('#oscuro');
-        
-        botonClaro.addEventListener('click', this.ponloClaro, false);
-        botonOscuro.addEventListener('click', this.ponloOscuro, false);
-    }   ,
-    ponloClaro: function() {
-        document.body.className= 'claro';
+        this.iniciaFastClick();
+        this.iniciaBoton();
     },
-    
-    ponloOscuro: function() {
-        document.body.className= 'oscuro';
-    }
+    iniciaFastClick: function() {
+      FastClick.attach(document.body);      
+  },
+  
+  iniciaBoton: function(){
+   var buttonAction=document.querySelector('#button-action');
+   buttonAction.addEventListener('click', this.tomarFoto);
+  },
+  
+  tomarFoto: function(){
+      var opciones = {quality: 50,
+              destinationType: Camera.DestinationType.FILE_URI,
+              targetWidth: 300,
+              targetHeight: 300,
+              correctOrientation: true
+          };
+          navigator.camera.getPicture(app.fotoTomada, app.errorAlTomarFoto, opciones);
+  },
+  fotoTomada: function(imageURI) {
+      var image = document.querySelector('#foto');
+      image.src=imageURI;
+  },
+  errorAlTomarFoto: function(){
+      console.log('Fallo al tomar la foto o toma cancelada: '+ message);
+  }
 };
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function(){
-        FastClick.attach(document.body);
         app.inicio();
-    }, false)
+    }, false);
 }
 

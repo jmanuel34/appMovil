@@ -17,25 +17,38 @@ body.claro {
 body.oscuro {
     background-color: #577a76    
 }
-button {
-    background-color: #7fba67;
-    color: #ffffff;
-    border: none;
-    width: 100%;
-    padding: 30px;
-    font-size: 1em;
-    margin-top: 10px;
+.header {
+    padding: 0 10px;
+    color: #667;
+    background-color: #eee;
+    text-align: center;
+    heigth: 48.4px;
+    line-height: 48.4px; 
 }
-#zona-gestos{
-    width:100%;
-    background-color: #7fba67;
-    margin-top: 10px;
-    min-height: 300px;
-    display: block;
+.footer{
+    padding: 5px;
+    font-style: italic;
+    font-size: small;
+    text-align: center;
 }
-#info {
-    color: #ffffff;
-    font-size: 2em;
-    margin-top: 10px;
-    text-transform: uppercase;
+#foto {
+    height: 400px;
+    border: 1px solid;
+    margin:1%;
+    box-sizing: border-box;
+    width: 98%;
+}
+.button-container{
+    margin: 1rem;
+    text-align: center;
+}
+.button{
+    border:1px solid;
+    color:#fff;
+    padding: 10px;
+}
+#button-action{
+    font-size: large;
+    border-radius: 10px;
+    background-color: #FD4140;
 }

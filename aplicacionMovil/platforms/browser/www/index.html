@@ -6,14 +6,21 @@
      <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
  
     <link rel="stylesheet" type="text/css" href="css/gestures.css" />
-    <title>App Prueba</title>
+    <title>App Cámara</title>
 </head>
 
 <body>
-    <button id = 'claro'>Claro</button>  
-    <button id = 'oscuro'>Oscuro</button>
-    <div id = 'zona-gestos'></div>
-    <h1 id ='info'>gesto!!</h1>
+    <div class="header">
+        <img align="left" src="image/camara.png">
+        <span>Mi cámara con filtros</span>
+    </div>
+    <img src="" id="foto"/>
+    <div class="button-container">
+        <button id ="button-action" class ="button">Tomar Foto</button>
+    </div>
+    <div class="footer" >Creando Apps. Aprende a programar Aplicaciones Móviles
+        
+    </div>
     <script type="text/javascript" src="cordova.js"></script>  
     <script type ="text/javascript" src="js/fastclick.js"></script>
     <script type ="text/javascript" src ="js/hammer.min.js"></script> 

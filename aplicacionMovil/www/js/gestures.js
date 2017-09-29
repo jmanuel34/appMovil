@@ -6,14 +6,17 @@
 var app= {
     inicio: function(){
         this.iniciaFastClick();
+        this.iniciaBoton();
     },
     iniciaFastClick: function() {
       FastClick.attach(document.body);      
   },
+  
   iniciaBoton: function(){
-   var ButtonAction=document.querySelector('#button-action');
+   var buttonAction=document.querySelector('#button-action');
    buttonAction.addEventListener('click', this.tomarFoto);
   },
+  
   tomarFoto: function(){
       var opciones = {quality: 50,
               destinationType: Camera.DestinationType.FILE_URI,
