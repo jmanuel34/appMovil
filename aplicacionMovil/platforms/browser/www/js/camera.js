@@ -82,30 +82,8 @@ var app={
     var img = document.createElement('img');
     img.onload = function(){
       app.pintarFoto(img);
-    }
+    };
     img.src = imageURI;
-  },
-
-  pintarFoto: function(img){
-    var canvas = document.querySelector('#foto');
-    var context = canvas.getContext('2d');
-    canvas.width = img.width;
-    canvas.height = img.height;
-    context.drawImage(img, 0, 0, img.width, img.height);
-  },
-
-  errorAlcargarFoto: function(message) {
-    console.log('Fallo al tomar foto o toma cancelada: ' + message);
-  },
-
-  aplicaFiltro: function(filterName){
-    var canvas = document.querySelector('#foto');
-    var context = canvas.getContext('2d');
-    imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-
-    effects[filterName](imageData.data);
-
-    context.putImageData(imageData, 0, 0);
   }
 };
 
