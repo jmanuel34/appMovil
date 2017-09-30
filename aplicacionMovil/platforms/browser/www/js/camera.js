@@ -21,7 +21,21 @@ var app={
       filterButtons[2].addEventListener('click', function(){
        app.aplicaFiltro('sepia');    
    });
-
+   var ButtonGallery= document.querySelector('#button-gallery');
+   buttonGallery.addEventListener('click', function(){
+       app.cargarFoto(Camera.PictureSourceType.PHOTOLIBRARY);
+   });
+  },
+  cargarFoto: function(pictureSourceType){
+    var opciones = {
+        quality: 50,
+        sourceType: pictureSourceType,
+        destinationType: Camera.DestinationType.FILE_URI,
+        targetWidth: 300,
+        targetHeight: 300,
+        correctOrientation: true
+    };
+    navigator.camera.getPicture(app.fotoCargada, app.errorAlCargarFoto, opciones);
   },
   
   tomarFoto: function() {
@@ -39,7 +53,7 @@ var app={
       var img = document.createElement('img');
       img.onload = function(){
          app.pintarFoto(img);
-      }
+      };
       img.src = imageURI;
   },
   
